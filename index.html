@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Assurance-crédit & affacturage expliqués simplement : protéger tes ventes B2B et accélérer ton cash." />
+  <meta name="description" content="NO BAD DEBTS : assurance-crédit &amp; affacturage expliqués simplement pour protéger tes ventes B2B et accélérer ton cash." />
   <!-- Mots-clés pour le référencement -->
-  <meta name="keywords" content="assurance crédit, affacturage, gestion des créances B2B, protection contre les impayés, délais de paiement, financement B2B, Diot Siaci Crédit" />
+  <meta name="keywords" content="no bad debts, assurance crédit, affacturage, gestion des créances B2B, protection contre les impayés, délais de paiement, financement B2B" />
   <!-- Balises Open Graph pour un meilleur partage social -->
-  <meta property="og:title" content="Assurance-crédit &amp; Affacturage – simple et punchy" />
-  <meta property="og:description" content="Explications simples sur l'assurance-crédit et l'affacturage pour protéger vos ventes B2B et améliorer votre trésorerie." />
+  <meta property="og:title" content="NO BAD DEBTS – Assurance-crédit &amp; Affacturage" />
+  <meta property="og:description" content="NO BAD DEBTS : assurance-crédit &amp; affacturage expliqués simplement pour protéger tes ventes B2B et accélérer ton cash." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://levenepa-cpu.github.io/PA/" />
+  <meta property="og:url" content="https://levenepa-cpu.github.io/nobaddebts/" />
   <meta property="og:locale" content="fr_FR" />
-  <title>Assurance-crédit &amp; Affacturage – simple et punchy</title>
+  <title>NO BAD DEBTS – Assurance-crédit &amp; Affacturage</title>
 
   <style>
     :root{
@@ -75,6 +75,18 @@
       box-shadow: 0 10px 24px rgba(0,0,0,.25);
       font-weight:900;
       white-space:nowrap;
+    }
+
+    /* Encart clinquant en haut de page */
+    .banner{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color: var(--bg);
+      padding: 14px 20px;
+      text-align: center;
+      border-radius: 16px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
     }
 
     .hero{
@@ -226,10 +238,13 @@
 
 <body>
   <div class="container">
+    <div class="banner">
+      <strong>NO BAD DEBTS</strong> – Protège tes ventes et accélère ton cash
+    </div>
     <nav class="nav" aria-label="Navigation">
       <a class="brand" href="#top">
         <span class="logo" aria-hidden="true"></span>
-        <span>Assurance-crédit &amp; Affacturage</span>
+        <span>NO BAD DEBTS</span>
       </a>
 
       <ul>
@@ -518,7 +533,7 @@
     </section>
 
     <footer>
-      <div>© <span id="year"></span> — Assurance-crédit &amp; Affacturage</div>
+      <div>© <span id="year"></span> — NO BAD DEBTS</div>
       <div>Infos générales, non contractuelles.</div>
     </footer>
   </div>
@@ -632,7 +647,7 @@ function attachThousandsFormatter(inputId) {
 
       if (errors.length) { alert(errors.join('\n')); return; }
 
-      const to = "levenepa@gmail.com";
+      const to = "nobaddebts@gmail.com";
 
       const subject = encodeURIComponent(`[${objet}] — ${nom}`);
       const body = encodeURIComponent(
