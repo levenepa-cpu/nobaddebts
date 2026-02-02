@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Assurance-crédit & affacturage expliqués simplement : protéger tes ventes B2B et accélérer ton cash." />
+  <title>Pierre Antoine Levené — Assurance-crédit & Affacturage (simple et punchy)</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#101a33;
+      --muted:#9fb0d0;
+      --text:#eaf0ff;
+      --brand:#5eead4;
+      --brand2:#60a5fa;
+      --danger:#fb7185;
+      --ok:#34d399;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(96,165,250,.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 15%, rgba(94,234,212,.18), transparent 55%),
+                  linear-gradient(180deg, #070b14, var(--bg));
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:26px 18px 70px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 14px;
+      background: rgba(16,26,51,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      position:sticky; top:14px; z-index:20;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:900; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 25px rgba(96,165,250,.25);
+    }
+    .nav ul{list-style:none; display:flex; gap:14px; margin:0; padding:0; flex-wrap:wrap; justify-content:flex-end}
+    .nav a.link{
+      text-decoration:none; color:var(--muted);
+      padding:10px 12px; border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav a.link:hover{color:var(--text); border-color:rgba(255,255,255,.10); background:rgba(255,255,255,.04)}
+    .cta{
+      text-decoration:none;
+      padding:10px 14px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(94,234,212,.18), rgba(96,165,250,.18));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .hero{
+      padding:42px 0 18px;
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: rgba(16,26,51,.70);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroLeft{padding:28px}
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(30px, 3.6vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.7px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      max-width: 60ch;
+      margin: 0 0 18px;
+    }
+    .pillRow{display:flex; gap:10px; flex-wrap:wrap; margin: 0 0 18px}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .heroBtns{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      text-decoration:none;
+      font-weight:900;
+      cursor:pointer;
+      background: rgba(255,255,255,.06);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(94,234,212,.22), rgba(96,165,250,.22));
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .mini{padding:18px; display:grid; gap:12px}
+    .kpis{display:grid; grid-template-columns: 1fr; gap:10px}
+    .kpi{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      display:grid; gap:6px;
+    }
+    .kpi .n{font-size:16px; font-weight:900}
+    .kpi .t{color:var(--muted); font-size:13px}
+
+    section{padding: 18px 0}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin: 6px 0 12px;
+    }
+    h2{margin:0; font-size: 24px; letter-spacing:-.3px}
+    .hint{color:var(--muted); margin:0}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px}
+    .box{padding:18px}
+    .box h3{margin:0 0 8px; font-size: 16px}
+    .box p{margin:0; color:var(--muted)}
+    .list{margin:10px 0 0; padding-left: 18px; color:var(--muted)}
+    .list li{margin:6px 0}
+
+    .callout{
+      padding:14px 16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+    }
+    .callout strong{color:var(--text)}
+    .result{
+      padding:18px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      display:grid; gap:10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      font-size: 13px;
+      width: fit-content;
+      color: var(--text);
+    }
+    .ok{color:var(--ok)}
+    .warn{color:var(--danger)}
+
+    label{display:block; font-size:13px; color:var(--muted); margin: 10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color: var(--text);
+      outline:none;
+    }
+    textarea{min-height: 110px; resize: vertical}
+
+    .faq details{
+      padding:14px 16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .faq summary{cursor:pointer; font-weight:900}
+    .faq p{margin:10px 0 0; color:var(--muted)}
+
+    footer{
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:space-between;
+    }
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .nav{border-radius: 18px}
+      .nav ul{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="nav" aria-label="Navigation">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Pierre Antoine Levené</span>
+      </a>
+
+      <ul>
+        <li><a class="link" href="#en-60s">En 60 secondes</a></li>
+        <li><a class="link" href="#produits">Les 2 produits</a></li>
+        <li><a class="link" href="#simulateurs">Simulateurs</a></li>
+        <li><a class="link" href="#faq">FAQ</a></li>
+      </ul>
+
+      <a class="cta" href="#contact">Me poser une question</a>
+    </nav>
+
+    <header id="top" class="hero">
+      <div class="card heroLeft">
+        <h1>Assurance-crédit & affacturage.<br/>Version simple, sans jargon.</h1>
+        <p class="sub">
+          Tu vends en <strong>B2B</strong> (à des entreprises), tu factures à <strong>30/60/90 jours</strong>,
+          et tu veux éviter le combo : “<em>client qui paie tard</em> + <em>client qui ne paie jamais</em>”.
+          Ici, on explique les bases vite et bien.
+        </p>
+
+        <div class="pillRow">
+          <span class="pill">🛡️ Assurance-crédit = “airbag impayé”</span>
+          <span class="pill">⚡ Affacturage = “cash plus vite”</span>
+          <span class="pill">🧠 Exemples concrets</span>
+          <span class="pill">🧮 Mini simulateurs</span>
+        </div>
+
+        <div class="heroBtns">
+          <a class="btn primary" href="#en-60s">Je veux comprendre vite</a>
+          <a class="btn" href="#simulateurs">Je teste avec des chiffres</a>
+        </div>
+      </div>
+
+      <aside class="card mini" aria-label="Pourquoi ça existe ?">
+        <div class="kpis">
+          <div class="kpi">
+            <div class="n">🔁 Le B2B, c’est “je livre maintenant, je suis payé plus tard”</div>
+            <div class="t">Donc ton cash peut souffrir… même si tu vends bien.</div>
+          </div>
+          <div class="kpi">
+            <div class="n">💥 Un gros impayé peut faire très mal</div>
+            <div class="t">Surtout quand il vient d’un “bon client” (jusqu’au jour où…).</div>
+          </div>
+          <div class="kpi">
+            <div class="n">🎯 Ces outils sont là pour protéger + accélérer</div>
+            <div class="t">Et pas seulement pour les “grosses boîtes”.</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Promis :</strong> ici on évite les mots chelous. Et quand on en met un, on le traduit.
+        </div>
+      </aside>
+    </header>
+
+    <section id="en-60s">
+      <div class="sectionTitle">
+        <h2>En 60 secondes</h2>
+        <p class="hint">Les deux définitions que tu peux ressortir en soirée (ou à ton boss).</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card box">
+          <h3>🛡️ Assurance-crédit</h3>
+          <p>
+            C’est une assurance contre le risque “<strong>mon client pro ne paie pas</strong>”.
+            En bonus, ça vient souvent avec de l’analyse (limites), du recouvrement, et un cadre de pilotage.
+          </p>
+          <ul class="list">
+            <li>Tu vends → tu déclares → tu suis tes encours</li>
+            <li>Si impayé “dans les règles du contrat” → indemnisation (souvent 80–95%)</li>
+            <li>Ça discipline aussi le process crédit/relance</li>
+          </ul>
+        </div>
+
+        <div class="card box">
+          <h3>⚡ Affacturage</h3>
+          <p>
+            Tu as des factures à encaisser dans 60 jours ? L’affacturage, c’est “<strong>je récupère du cash tout de suite</strong>”
+            (en échange de frais), en utilisant tes factures comme base.
+          </p>
+          <ul class="list">
+            <li>Tu cèdes des factures à un factor (organisme de financement)</li>
+            <li>Tu touches une avance (ex : 80–95%)</li>
+            <li>Le factor se fait payer par ton client → et te reverse le reste (moins les frais)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="produits">
+      <div class="sectionTitle">
+        <h2>À quoi ça sert (vraiment) ?</h2>
+        <p class="hint">Si tu veux retenir une idée : assurance-crédit = protection, affacturage = vitesse.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card box">
+          <h3>😵 Problème #1 : “on vend, mais on manque de cash”</h3>
+          <p>Souvent quand la croissance est rapide ou quand les délais de paiement s’allongent.</p>
+        </div>
+        <div class="card box">
+          <h3>💣 Problème #2 : “un client tombe, et ça pique”</h3>
+          <p>Un impayé, c’est pas juste “pas de cash” : c’est parfois de la marge qui disparaît.</p>
+        </div>
+        <div class="card box">
+          <h3>🧩 Combo : les deux ensemble</h3>
+          <p>Tu peux protéger le risque d’impayé ET accélérer le cash (selon montage).</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:12px">
+        <strong>Traduction express :</strong> “encours” = ce que tes clients te doivent à un instant T.
+      </div>
+    </section>
+
+    <section id="simulateurs">
+      <div class="sectionTitle">
+        <h2>Mini simulateurs (ultra indicatifs)</h2>
+        <p class="hint">Juste pour voir des ordres de grandeur. Ce n’est pas un devis.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card box">
+          <h3>⚡ Affacturage : cash et coût</h3>
+
+          <label for="fact_amount">Factures mobilisées (en €)</label>
+          <input id="fact_amount" type="text" inputmode="numeric" autocomplete="off" value="250000" />
+
+          <label for="fact_fee">Frais “all-in” (en %)</label>
+          <input id="fact_fee" type="number" min="0" step="0.01" value="1.10" />
+
+          <label for="fact_advance">Avance (en %)</label>
+          <input id="fact_advance" type="number" min="0" max="100" step="1" value="90" />
+
+          <button class="btn primary" id="calc_fact" type="button">Calculer l'affacturage</button>
+
+          <div class="result" id="out_fact" style="margin-top:12px">
+            <span class="badge">📌 Mets tes chiffres puis clique sur “Calculer”.</span>
+            <div style="color:var(--muted)">Tu verras l’avance estimée et le coût indicatif.</div>
+          </div>
+
+          <p style="margin:10px 0 0; color:var(--muted); font-size:13px">
+            *On simplifie : dans la vraie vie, il y a des subtilités (réserve, intérêts, litiges, etc.).
+          </p>
+        </div>
+
+        <div class="card box">
+          <h3>🛡️ Assurance-crédit : “coût vs impayés”</h3>
+
+          <label for="ins_sales">Ventes B2B “à risque” (en € / an)</label>
+          <input id="ins_sales" type="text" inputmode="numeric" autocomplete="off" value="800000" />
+
+          <label for="ins_default">Taux d’impayés sans assurance (en %)</label>
+          <input id="ins_default" type="number" min="0" step="0.1" value="0.8" />
+
+          <label for="ins_premium">Taux de prime (en %)</label>
+          <input id="ins_premium" type="number" min="0" step="0.01" value="0.25" />
+
+          <label for="ins_cover">Taux d’indemnisation (en %)</label>
+          <input id="ins_cover" type="number" min="0" max="100" step="1" value="90" />
+
+          <button class="btn primary" id="calc_ins" type="button">Calculer l'assurance-crédit</button>
+
+          <div class="result" id="out_ins" style="margin-top:12px">
+            <span class="badge">📌 Idée : comparer “pertes probables” et “prime”.</span>
+            <div style="color:var(--muted)">Ça ne remplace pas l’analyse d’un vrai portefeuille.</div>
+          </div>
+
+          <p style="margin:10px 0 0; color:var(--muted); font-size:13px">
+            *On parle d’espérance de perte (statistique), pas d’une certitude.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="sectionTitle">
+        <h2>FAQ (les vraies questions)</h2>
+        <p class="hint">Celles que tu te poses probablement si tu débarques sur le sujet.</p>
+      </div>
+
+      <div class="grid2">
+        <details class="card">
+          <summary>Est-ce que c’est réservé aux grosses boîtes ?</summary>
+          <p>
+            Non. Le besoin (cash + risque d’impayé) existe aussi chez des PME, startups B2B, agences, boîtes en croissance.
+            La différence, c’est le “format” (plus simple, ciblé, progressif).
+          </p>
+        </details>
+
+        <details class="card">
+          <summary>Si j’ai des impayés à cause d’un litige, c’est couvert ?</summary>
+          <p>
+            Souvent non : un litige (qualité, livraison, contestation) bloque la couverture.
+            D’où l’intérêt d’un process propre : commande, preuve de livraison, CGV, etc.
+          </p>
+        </details>
+
+        <details class="card">
+          <summary>Affacturage : est-ce que mes clients vont le savoir ?</summary>
+          <p>
+            Ça dépend : il existe des montages “notifiés” (le client paie le factor) ou plus discrets (selon cas).
+            Ça se choisit selon ton business et ton organisation.
+          </p>
+        </details>
+
+        <details class="card">
+          <summary>Ok… je commence par lequel ?</summary>
+          <p>
+            Si ton stress = “un client peut me planter” → assurance-crédit.
+            Si ton stress = “j’attends 60 jours pour respirer” → affacturage.
+            Souvent, on regarde les deux et on choisit le combo le plus simple.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionTitle">
+        <h2>Contact</h2>
+        <p class="hint">Tu veux un avis simple sur ton cas ? Donne 2 chiffres, je te dis par où commencer.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card box">
+          <h3>Quoi m’envoyer (super simple)</h3>
+          <ul class="list">
+            <li>Ton CA B2B + délai moyen de paiement</li>
+            <li>Ton top 5 clients (en % du CA)</li>
+            <li>Ton objectif : “protéger” ou “cash”</li>
+          </ul>
+          <div class="callout" style="margin-top:12px">
+            <strong>Note :</strong> le site est un template. On peut ensuite le publier sur un nom de domaine.
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3>Message (ouvre ton email)</h3>
+
+          <label for="nom">Ton nom / Ta boîte</label>
+          <input id="nom" placeholder="Ex : Alex — Studio/PME XYZ" />
+
+          <label for="email">Ton email</label>
+          <input id="email" type="email" placeholder="ex : alex@entreprise.com" />
+
+          <label for="objet">Sujet</label>
+          <select id="objet">
+            <option>Je veux comprendre l’assurance-crédit</option>
+            <option>Je veux comprendre l’affacturage</option>
+            <option>J’hésite : j’explique mon cas</option>
+          </select>
+
+          <label for="msg">Ton message</label>
+          <textarea id="msg" placeholder="Ex : on fait 1M€ B2B, paiement 60j, croissance, 3 gros clients…"></textarea>
+
+          <button class="btn primary" id="send" type="button">Ouvrir mon email</button>
+
+          <p style="margin:10px 0 0; color:var(--muted); font-size:13px">
+            🔧 À faire : dans le code, remplace l’adresse <em>to = ...</em> par ton email.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> — Pierre Antoine Levené</div>
+      <div>Infos générales, non contractuelles.</div>
+    </footer>
+  </div>
+
+  <script>
+    const eur = (n) => new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR' }).format(n);
+
+// --- Formatage & parsing FR (séparateurs de milliers, virgule, espaces) ---
+const fmtIntFR = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
+
+function formatThousands(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "0";
+  return fmtIntFR.format(n);
+}
+
+function parseFR(str) {
+  return Number(String(str ?? "")
+    .replace(/\u202F/g, "") // espace fine insécable (fr-FR)
+    .replace(/\s/g, "")     // espaces
+    .replace(",", ".")       // virgule -> point
+  );
+}
+
+function attachThousandsFormatter(inputId) {
+  const el = document.getElementById(inputId);
+  if (!el) return;
+
+  // Au focus : on enlève les séparateurs pour faciliter la saisie
+  el.addEventListener('focus', () => {
+    const raw = String(el.value ?? "").replace(/\u202F/g, "").replace(/\s/g, "");
+    el.value = raw;
+  });
+
+  // Au blur : on reformate avec séparateurs de milliers
+  el.addEventListener('blur', () => {
+    const n = parseFR(el.value);
+    el.value = formatThousands(Number.isFinite(n) ? n : 0);
+  });
+
+  // Format initial
+  const n0 = parseFR(el.value);
+  el.value = formatThousands(Number.isFinite(n0) ? n0 : 0);
+}
+
+
+    function computeFactoring() {
+      const amount = parseFR(document.getElementById('fact_amount').value || 0);
+      const fee = Number(document.getElementById('fact_fee').value || 0) / 100;
+      const advance = Number(document.getElementById('fact_advance').value || 0) / 100;
+
+      const cost = amount * fee;
+      const cash = amount * advance;
+      const net = cash - cost;
+
+      const badgeClass = net >= 0 ? 'ok' : 'warn';
+      const badgeIcon = net >= 0 ? '✅' : '⚠️';
+      const badgeText = net >= 0 ? 'Lecture simple' : 'Hypothèses à vérifier';
+
+      document.getElementById('out_fact').innerHTML = `
+        <span class="badge ${badgeClass}">${badgeIcon} ${badgeText}</span>
+        <div><strong>Cash “tout de suite” (avance) :</strong> ${eur(cash)}</div>
+        <div><strong>Coût indicatif :</strong> ${eur(cost)}</div>
+        <div><strong>Net (avance - coût) :</strong> ${eur(net)}</div>
+        <div style="color:var(--muted); font-size:13px">
+          À affiner selon : réserve, intérêts, litiges, concentration clients, délai moyen.
+        </div>
+      `;
+    }
+
+    function computeInsurance() {
+      const sales = parseFR(document.getElementById('ins_sales').value || 0);
+      const defaultRate = Number(document.getElementById('ins_default').value || 0) / 100;
+      const premiumRate = Number(document.getElementById('ins_premium').value || 0) / 100;
+      const coverRate = Number(document.getElementById('ins_cover').value || 0) / 100;
+
+      const expectedLoss = sales * defaultRate;              // perte “probable” sans assurance (statistique)
+      const premium = sales * premiumRate;                   // prime indicatif
+      const expectedCovered = expectedLoss * coverRate;      // partie “assurée” (très simplifié)
+      const expectedNet = expectedCovered - premium;
+
+      const badgeClass = expectedNet >= 0 ? 'ok' : 'warn';
+      const badgeIcon = expectedNet >= 0 ? '✅' : '⚠️';
+      const badgeText = expectedNet >= 0 ? 'Ça peut valoir le coup (sur le papier)' : 'Pas évident (sur le papier)';
+
+      document.getElementById('out_ins').innerHTML = `
+        <span class="badge ${badgeClass}">${badgeIcon} ${badgeText}</span>
+        <div><strong>Pertes “probables” sans assurance :</strong> ${eur(expectedLoss)}</div>
+        <div><strong>Prime indicatif :</strong> ${eur(premium)}</div>
+        <div><strong>Pertes “potentiellement compensées” :</strong> ${eur(expectedCovered)}</div>
+        <div><strong>Écart (compensation - prime) :</strong> ${eur(expectedNet)}</div>
+        <div style="color:var(--muted); font-size:13px">
+          Attention : la couverture dépend des règles du contrat (délais, déclarations, absence de litige, etc.).
+        </div>
+      `;
+    }
+
+    document.getElementById('calc_fact').addEventListener('click', computeFactoring);
+    document.getElementById('calc_ins').addEventListener('click', computeInsurance);
+
+    document.getElementById('send').addEventListener('click', () => {
+      const nom = document.getElementById('nom').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const objet = document.getElementById('objet').value;
+      const msg = document.getElementById('msg').value.trim();
+
+      const errors = [];
+      if (!nom) errors.push("Nom / boîte manquant.");
+      if (!email || !email.includes('@')) errors.push("Email invalide.");
+      if (!msg) errors.push("Message vide.");
+
+      if (errors.length) { alert(errors.join('\n')); return; }
+
+      // 🔧 Remplace cette adresse par TON email :
+      const to = "ton.email@exemple.com";
+
+      const subject = encodeURIComponent(`[${objet}] — ${nom}`);
+      const body = encodeURIComponent(
+        `Bonjour Pierre Antoine,\n\n${msg}\n\nCoordonnées :\n- Nom/Boîte : ${nom}\n- Email : ${email}\n\nMerci !\n${nom}`
+      );
+
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Séparateurs de milliers dans les champs €
+    attachThousandsFormatter('fact_amount');
+    attachThousandsFormatter('ins_sales');
+
+    // Exemple au chargement
+    computeFactoring();
+    computeInsurance();
+  </script>
+</body>
+</html>
