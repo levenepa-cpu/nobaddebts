@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Auto-diagnostic gratuit du risque client en 6 questions | NO BAD DEBTS</title>
+<meta name="description" content="Concentration des clients, retards de paiement, garanties : identifie en quelques minutes les sujets à surveiller dans ton entreprise.">
+<link rel="canonical" href="https://nobaddebts.fr/diagnostic.html"><meta property="og:type" content="article"><meta property="og:title" content="Auto-diagnostic gratuit du risque client en 6 questions"><meta property="og:description" content="Concentration des clients, retards de paiement, garanties : identifie en quelques minutes les sujets à surveiller dans ton entreprise."><meta property="og:url" content="https://nobaddebts.fr/diagnostic.html">
+<link rel="stylesheet" href="assets/learning.css"></head>
+<body><div class="wrap"><nav class="nav"><a class="brand" href="index.html">NO BAD DEBTS</a><div class="nav-links"><a href="blog.html">Tous les articles</a><a href="diagnostic.html">Auto-diagnostic</a><a href="index.html#contact">Contact</a></div></nav>
+<header class="hero"><div class="eyebrow">Outil gratuit · Pour les PME</div><h1>Auto-diagnostic gratuit du risque client en 6 questions</h1><p class="lead">Concentration des clients, retards de paiement, garanties : identifie en quelques minutes les sujets à surveiller dans ton entreprise.</p><p class="meta">Mis à jour le 18 novembre 2026 · Contenu pédagogique · NO BAD DEBTS</p></header>
+<main class="content"><p>Ce mini-questionnaire n'est ni une notation de solvabilité ni un audit professionnel. Il aide à identifier des <strong>signaux de vigilance</strong> avant de chercher une solution de financement ou de protection des factures.</p>
+<form id="quiz">
+<fieldset><legend>1. Un seul client représente-t-il plus de 25 % de ton chiffre d'affaires ?</legend><label><input type="radio" name="q1" value="1" required>Oui</label><label><input type="radio" name="q1" value="0">Non</label></fieldset>
+<fieldset><legend>2. As-tu des factures qui dépassent régulièrement leur date d'échéance de plus de 30 jours ?</legend><label><input type="radio" name="q2" value="1" required>Oui</label><label><input type="radio" name="q2" value="0">Non</label></fieldset>
+<fieldset><legend>3. Ton entreprise manque-t-elle parfois de trésorerie en attendant le règlement des clients ?</legend><label><input type="radio" name="q3" value="1" required>Oui</label><label><input type="radio" name="q3" value="0">Non</label></fieldset>
+<fieldset><legend>4. Vérifies-tu rarement la solvabilité des nouveaux clients ou des clients importants ?</legend><label><input type="radio" name="q4" value="1" required>Oui</label><label><input type="radio" name="q4" value="0">Non</label></fieldset>
+<fieldset><legend>5. N'as-tu pas de solution organisée pour protéger les créances contre une défaillance importante ?</legend><label><input type="radio" name="q5" value="1" required>Oui</label><label><input type="radio" name="q5" value="0">Non</label></fieldset>
+<fieldset><legend>6. Les litiges ou erreurs de facturation retardent-ils régulièrement les encaissements ?</legend><label><input type="radio" name="q6" value="1" required>Oui</label><label><input type="radio" name="q6" value="0">Non</label></fieldset>
+<button class="btn" type="submit">Afficher mon bilan</button>
+</form>
+<div class="panel" id="result" aria-live="polite" hidden></div>
+<p class="fine">Tes réponses restent dans ton navigateur : rien n'est envoyé au site pendant le questionnaire. L'option de contact ci-dessous ouvrira ton logiciel de messagerie et n'enverra un email que si tu le valides.</p>
+<p>Pour aller plus loin : <a href="articles/dso-calcul-exemple.html">calculer le DSO</a> ou <a href="articles/combien-coute-vraiment-un-impaye.html">mesurer le coût d'un impayé</a>.</p>
+<script>
+document.getElementById('quiz').addEventListener('submit',function(e){
+  e.preventDefault();
+  const f=new FormData(this), names=['concentration client','retards supérieurs à 30 jours','tension de trésorerie','suivi de solvabilité à renforcer','protection contre la défaillance','litiges ou erreurs de facturation'];
+  const topics=names.filter((_,i)=>f.get('q'+(i+1))==='1'), n=topics.length;
+  const label=n<=1?'Peu de signaux dans ce questionnaire':n<=3?'Plusieurs sujets méritent un examen':'Plusieurs points de vigilance à approfondir';
+  const result=document.getElementById('result');
+  result.hidden=false;result.replaceChildren();
+  const title=document.createElement('h2');title.textContent=label;result.appendChild(title);
+  const p=document.createElement('p');p.textContent=n+' réponse(s) révélant un point à surveiller sur 6. Ce score est pédagogique : il ne mesure pas une probabilité de défaut.';result.appendChild(p);
+  const note=document.createElement('p');note.textContent=topics.length?'À regarder en priorité : '+topics.join(', ')+'.':'Tu peux quand même vérifier régulièrement tes encours et la qualité de ta facturation.';result.appendChild(note);
+  const link=document.createElement('a');link.className='btn';link.textContent='Demander un échange sur mon cas';link.href='mailto:nobaddebts@gmail.com?subject='+encodeURIComponent('Question après le diagnostic NO BAD DEBTS')+'&body='+encodeURIComponent('Bonjour,\n\nJe souhaite échanger sur le risque client de mon entreprise.\n\nPrincipaux sujets : '+(topics.join(', ')||'à préciser')+'.\n\nMon entreprise :\nMon prénom et mon nom :\nMon email professionnel :\n\nMerci !');result.appendChild(link);
+  result.scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script></main><footer>© NO BAD DEBTS · Contenu informatif, sans conseil personnalisé. <a href="blog.html">Continuer à apprendre</a>.</footer></div></body></html>
