@@ -26,3 +26,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:860px){.lead-grid{grid-template-columns:1fr 1fr}.promo-strip{display:block}.promo-strip .btn{margin-top:17px}}
 @media(max-width:620px){.lead-grid,.option-row{grid-template-columns:1fr}.promo-strip{padding:22px}}
 @media print{.nav,.top,.footer,.noprint,.actions,.promo-strip{display:none!important}.wrap{width:100%}.section{padding:12px 0}.checklist li{break-inside:avoid}.print-only{display:block}.article-hero{padding:12px 0}body{background:white}}
+
+/* Simulateur DSO intégré à l'article facturation électronique */
+.dso-tool{background:#eaf5e4;border:2px solid #a8d998;border-radius:22px;padding:27px;margin:33px 0}
+.dso-tool h2{margin:.35rem 0 .8rem;font-size:1.75rem}
+.dso-tool-fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.dso-tool .field{margin:10px 0}
+.dso-tool .field label{display:block;font-size:.88rem;font-weight:800;margin-bottom:7px}
+.dso-tool .field input{display:block;width:100%;background:#fff;border:1px solid #a4bfa5;border-radius:12px;padding:12px;font:inherit}
+.dso-tool-output{display:flex;flex-direction:column;gap:4px;background:#10292f;color:white;padding:20px;border-radius:17px;margin:16px 0}
+.dso-tool-output span{font-size:.88rem;color:#c8dbd3}
+.dso-tool-output strong{color:#c6f29c;font-size:clamp(2rem,5vw,3.1rem);letter-spacing:-.04em;line-height:1.18}
+.dso-tool-output small{color:#c8dbd3}
+@media(max-width:610px){.dso-tool{padding:18px}.dso-tool-fields{grid-template-columns:1fr}}
