@@ -7,6 +7,23 @@ document.addEventListener('DOMContentLoaded',()=>{
  get('result-sim').innerHTML=`<div>Chiffre d’affaires supplémentaire pour compenser l’impayé :</div><div class="number">${eur(replacement)}</div><p>Avec ${margin}% de marge sur coûts variables, une perte définitive de ${eur(unpaid)} exige ${eur(replacement)} de ventes supplémentaires pour reconstituer cette marge.</p><hr style="border:0;border-top:1px solid #3c555a"><p>À titre d'illustration, ${dso} jours de ventes représentent environ <strong style="color:#c6f29c">${eur(financing)}</strong> de chiffre d'affaires TTC ou HT selon le montant saisi, non encore encaissé dans un modèle stable et linéaire.</p>`;
  }
  ['impaye','marge','ventes','jours'].forEach(id=>get(id)?.addEventListener('input',simulate));simulate();
+
+ // Outil DSO : calcul entièrement local, aucune donnée transmise.
+ const dsoCa=get('dso-ca'), dsoDays=get('dso-gain'), dsoResult=get('dso-result'), dsoDetail=get('dso-detail');
+ function computeDsoGain(){
+   if(!dsoCa||!dsoDays||!dsoResult)return;
+   const sales=Number(dsoCa.value), days=Number(dsoDays.value);
+   if(!dsoCa.value||!dsoDays.value||!Number.isFinite(sales)||!Number.isFinite(days)||sales<0||sales>1e12||days<0||days>360){
+     dsoResult.textContent='—';
+     if(dsoDetail)dsoDetail.textContent='Indique un chiffre d’affaires positif et un gain entre 0 et 360 jours.';
+     return;
+   }
+   dsoResult.textContent=eur(sales/360*days);
+   if(dsoDetail)dsoDetail.textContent='Estimation sur une base de 360 jours, à ventes constantes et activité régulière.';
+ }
+ [dsoCa,dsoDays].forEach(input=>input?.addEventListener('input',computeDsoGain));
+ computeDsoGain();
+
  const params = new URLSearchParams(window.location.search);
  const source = params.get('sujet');
  const article = params.get('origine');
@@ -25,7 +42,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
 
  const articleField = get('article-origine');
- if (articleField && source === 'simulateur' && fromUnpaidArticle) {
+ if (articleField && ((source === 'simulateur' && fromUnpaidArticle) || (source === 'calcul-dso' && article === 'facturation-electronique-2027-tresorerie'))) {
    articleField.value = article;
  }
 
@@ -49,6 +66,12 @@ document.addEventListener('DOMContentLoaded',()=>{
      const body = encodeURIComponent([data.get('message').trim(), '', ...details].join('\n'));
      window.location.href = `mailto:nobaddebts@gmail.com?subject=${subject}&body=${body}`;
    });
+ }
+
+ if (form && source === 'calcul-dso') {
+   const besoin = get('besoin'), message = get('message');
+   if(besoin)besoin.value='Financer mon poste clients';
+   if(message)message.placeholder='Je viens de tester le calculateur DSO et je souhaite comprendre comment améliorer mes encaissements...';
  }
  if (form && source === 'simulateur') {
    get('besoin').value = 'Des impayés ou retards de paiement';
