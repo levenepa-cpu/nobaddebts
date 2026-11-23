@@ -42,10 +42,24 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
 
  const articleField = get('article-origine');
- if (articleField && ((source === 'simulateur' && fromUnpaidArticle) || (source === 'calcul-dso' && article === 'facturation-electronique-2027-tresorerie'))) {
+ if (articleField && article && /^[a-z0-9-]{1,120}$/.test(article)) {
    articleField.value = article;
  }
 
+ const copyContact=get('copy-contact');
+ copyContact?.addEventListener('click',async()=>{
+   const panel=get('contact-feedback'),status=get('copy-status');
+   if(!panel?.dataset.prepared)return;
+   try{
+     await navigator.clipboard.writeText(panel.dataset.prepared);
+     if(status)status.textContent='Message copié. Colle-le dans ton email habituel.';
+   }catch(e){
+     if(status)status.textContent='La copie automatique a été bloquée. Sélectionne ton message ci-dessous et copie-le manuellement.';
+     let area=get('contact-copy-text');
+     if(!area){area=document.createElement('textarea');area.id='contact-copy-text';area.setAttribute('aria-label','Message préparé');area.style.width='100%';area.style.minHeight='170px';panel.appendChild(area);}
+     area.value=panel.dataset.prepared;area.focus();area.select();
+   }
+ });
  const form = document.forms.namedItem('prise-de-contact');
  if (form) {
    form.hidden = false;
@@ -64,13 +78,16 @@ document.addEventListener('DOMContentLoaded',()=>{
        .map(([label, value]) => label + ' : ' + value);
      const subject = encodeURIComponent(data.get('besoin'));
      const body = encodeURIComponent([data.get('message').trim(), '', ...details].join('\n'));
+     const feedback=get('contact-feedback');
+     const prepared='À : nobaddebts@gmail.com\nObjet : '+data.get('besoin')+'\n\n'+decodeURIComponent(body);
+     if(feedback){feedback.hidden=false;feedback.dataset.prepared=prepared;}
      window.location.href = `mailto:nobaddebts@gmail.com?subject=${subject}&body=${body}`;
    });
  }
 
  if (form && source === 'calcul-dso') {
    const besoin = get('besoin'), message = get('message');
-   if(besoin)besoin.value='Financer mon poste clients';
+   if(besoin)besoin.value='Réduire mes délais d’encaissement (DSO)';
    if(message)message.placeholder='Je viens de tester le calculateur DSO et je souhaite comprendre comment améliorer mes encaissements...';
  }
  if (form && source === 'simulateur') {
